@@ -1,9 +1,6 @@
 crm_di_core
 ===========
 
-
-** NOT READY FOR USE AT THE MOMENT - IN PROCESS OF REARRANGING REPOSITORIES TO SEPERATE TEST HARNESS CODE OUT OF crm_di_core **
-
 Overview
 --------
 
