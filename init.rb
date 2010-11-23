@@ -15,7 +15,7 @@ FatFreeCRM::Plugin.register(:crm_di_core, initializer) do
        authors "Delta Indigo"
        version "0.1"
    description "Adds baseline Delta Indigo enhancements to Fat Free CRM"
-  dependencies :haml, :simple_column_search, :will_paginate
+  dependencies :haml, :simple_column_search
 
   # Remove non-functional admin tabs
   tab :admin do |tabs|

@@ -26,7 +26,7 @@ class DICoreFFViewHooks < FatFreeCRM::Callback::Base
           #sstype
             .label 
               Sub-subtype:
-            = f.lookup_select :contact_sub_sub_type_id, { :lookup => "contact.type.subtype.subsubtype", :parent => :contact_sub_type_id, :lookup_options => { :hide_element => "sstype" }  }, { }, { :style => "width:240px" }
+            -#= f.lookup_select :contact_sub_sub_type_id, { :lookup => "contact.type.subtype.subsubtype", :parent => :contact_sub_type_id, :lookup_options => { :hide_element => "sstype" }  }, { }, { :style => "width:240px" }
         %td= spacer
         %td
           #xdiv
@@ -44,7 +44,7 @@ class DICoreFFViewHooks < FatFreeCRM::Callback::Base
           #ostype
             .label 
               = I18n.t(:sub_type, :scope => [:di, :contacts]) << "X:"
-            = f.lookup_select :contact_osub_type_id, { :lookup => "contact.type.subtype.subsubtype", :parent_control => :new_ctrl, :parent_id => @contact.contact_type_id, :lookup_options => { :include_blank_if_empty => '[NO OST]', :hide_element => 'ostype', :parent_group => true } }, { }, { :style => "width:240px" }
+            -#= f.lookup_select :contact_osub_type_id, { :lookup => "contact.type.subtype.subsubtype", :parent_control => :new_ctrl, :parent_id => @contact.contact_type_id, :lookup_options => { :include_blank_if_empty => '[NO OST]', :hide_element => 'ostype', :parent_group => true } }, { }, { :style => "width:240px" }
 EOS
 
   HAML_CONTACT_SIDEBAR_EXT = <<EOS
