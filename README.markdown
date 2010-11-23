@@ -43,28 +43,18 @@ The database migrations required for the plug can be installed with the followin
 ...that can be run from the Fat Free CRM installation root.
 
 
-Sample Data
------------
-
-Sample *contact type* and *contact subtype* lookup fields may be created using the following *rake* command:
-
-> `rake crm:di:contacts:setup`
-`
-These fields initially contain no lookup values. Sample values can be installed with the following *rake* command:
-
-> `rake crm:di:contacts:demo`
-
-These commands respond to the usual rake environment options, such as `RAILS_ENV=test`.
-
 
 Tests
 -----
+
+An example of the use of the *lookup* module can be found by installing the [crm_di_contacts][4] plugin, including its demonstration data, which uses the *lookups* module to add custom fields to the *contact* model and UI in Fat Free.
 
 *rspec* tests in the `spec` directory are not currently pushed to [github][3] as, for the time being they are **much** more buggy than the code they are intended to test, so the *develop_test_scripts* branch is staying local for now!
 
 
 Copyright (c) 2010 [Delta Indigo Ltd.][1], released under the MIT license
 
-[1]: http://www.deltindigo.com/             "Delta Indigo"
-[2]: http://www.fatfreecrm.com/             "Fat Free CRM"
-[3]: http://www.github.com/                 "github"
+[1]: http://www.deltindigo.com/                 "Delta Indigo"
+[2]: http://www.fatfreecrm.com/                 "Fat Free CRM"
+[3]: http://www.github.com/                     "github"
+[4]: https://github.com/jdowson/crm_di_contacts "crm_di_contacts"
