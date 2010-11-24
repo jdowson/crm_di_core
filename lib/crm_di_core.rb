@@ -21,10 +21,9 @@ end
 
 # Load core modules
 require File.join(File.dirname(__FILE__), "crm_di_core", "lookup_cache")
-require File.join(File.dirname(__FILE__), "crm_di_core", "lookups_view_helper")
-require File.join(File.dirname(__FILE__), "crm_di_core", "lookups_form_helper")
+require File.join(File.dirname(__FILE__), "crm_di_core", "lookup_view_helpers")
+require File.join(File.dirname(__FILE__), "crm_di_core", "lookup_form_helpers")
 
 # Fat Free integration
 require File.join(File.dirname(__FILE__), "crm_di_core", "lookup_ff_controller_hooks")
-require File.join(File.dirname(__FILE__), "crm_di_core", "fat_free_view_hooks")
-
+require File.join(File.dirname(__FILE__), "crm_di_core", "lookup_ff_view_hooks")

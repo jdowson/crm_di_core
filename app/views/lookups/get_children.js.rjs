@@ -1,14 +1,14 @@
-bFirst = true
-sHTML = ""
-sHTML << "<option>#{@blank_text}</option>" unless @blank_text.nil?
+l = lookup_select_defaults(@lookup, @options)
+o = lookup_select_options(l)
+v = l[:select_first] ? o[:first_value] : nil
 
-sHTML << (@has_groupings ? grouped_options_for_select(@values, @value) : options_for_select(@values, @value))
+sHTML = (o[:has_groupings] ? grouped_options_for_select(o[:options], v) : options_for_select(o[:options], v))
 
 page[@child].update(sHTML)
+page[@child].simulate("change") if l[:cascade]
 
-page[@child].simulate("change") if(@lookup_options.has_key?(:cascade) && @lookup_options[:cascade].to_sym == :true)
+page[@child].disable() if l[:disable_if_empty] && o[:empty]
+page[@child].enable()  if l[:disable_if_empty] && !o[:empty]
 
-page[@lookup_options[:hide_element]].hide() if(@lookup_options.has_key?(:hide_element) && !@lookup_options[:hide_element].to_s.empty? && @values.size == 0)
-
-page[@lookup_options[:hide_element]].show() if(@lookup_options.has_key?(:hide_element) && !@lookup_options[:hide_element].to_s.empty? && @values.size > 0)
-
+page[l[:hide_element_if_empty]].hide() if !l[:hide_element_if_empty].nil? && o[:empty]
+page[l[:hide_element_if_empty]].show() if !l[:hide_element_if_empty].nil? && !o[:empty]

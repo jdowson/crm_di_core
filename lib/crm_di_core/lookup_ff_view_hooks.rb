@@ -1,5 +1,5 @@
 
-class DICoreFFViewHooks < FatFreeCRM::Callback::Base
+class DICoreLookupFFViewHooks < FatFreeCRM::Callback::Base
 
   # DI standard style inclusions
   INLINE_STYLES_LOOKUPS = <<EOS

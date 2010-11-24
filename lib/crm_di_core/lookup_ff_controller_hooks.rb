@@ -10,5 +10,5 @@ class DICoreLookupFFControllerHooks < FatFreeCRM::Callback::Base
   end
   
 end
- 
+
  

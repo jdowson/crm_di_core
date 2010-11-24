@@ -84,6 +84,25 @@ class DILookupCache
   
   # Cache access methods
   # ---------------------------------------------------------------------
+  def self.lookup(lookup_name)
+    @lookup_cache[lookup_name]
+  end
+
+  def self.parent_lookup(lookup_name)
+    @lookup_cache[lookup_name][:parent]
+  end
+  
+  def self.id_from_code(lookup_name, code)
+    if(lookup_items = self.items_all_parents(lookup_name))
+      code_matches =  lookup_items.select {|v| (v[:code] == code)}
+      code_matches[0][:id] if !code_matches.empty?
+    end
+  end
+  
+  def self.parent_id_from_code(lookup_name, parent_code)
+    self.id_from_code(parent_lookup(lookup_name), parent_code)
+  end
+  
   def self.u_itemdesc(id)
     if i = self.item(id)
       i[:description]
@@ -178,7 +197,7 @@ class DILookupCache
   end
 
   def self.l_groupoptionsbyparent(lookup_name, parent_id = nil, id = :id, description = :description, groupdescription = :description, locale = nil)
-    parent       = @lookup_cache[lookup_name][:parent]
+    parent       = parent_lookup(lookup_name)
     parent_items = _options(self.l_items(parent, parent_id, locale), :id, groupdescription)
     items        = []
     parent_items.each do |p|
@@ -272,6 +291,12 @@ class DILookupCache
   def self.items(lookup_name, parent_id = nil)
     if lookup = @lookup_cache[lookup_name]
       @lookup_item_cache.select {|k, v| (v[:lookup_id] == lookup[:id]) && (v[:parent_id] == parent_id)}.values
+    end
+  end
+  
+  def self.items_all_parents(lookup_name)
+    if lookup = @lookup_cache[lookup_name]
+      @lookup_item_cache.select {|k, v| (v[:lookup_id] == lookup[:id])}.values
     end
   end
   
