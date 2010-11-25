@@ -136,6 +136,7 @@ module ActionView
       l         = lookup_select_defaults(lookup, options)
       o         = lookup_select_options(l)
       observer  = ""
+      hider     = ""
       html_name = (options[:multiple] == true && !name.to_s.ends_with?("[]")) ? "#{name}[]" : name
 
       options.delete(:include_blank)
@@ -156,7 +157,11 @@ module ActionView
         observer = lookup_observer(parent_control_id, this_control_id, l, options)
       end
       
-      html << observer
+      if o[:empty] && !l[:hide_element_if_empty].nil?
+        hider = javascript_tag "$('#{l[:hide_element_if_empty]}').hide()", :defer => 'defer'
+      end 
+      
+      html << observer << hider
 
     end
 
@@ -164,6 +169,7 @@ module ActionView
 
       l        = lookup_select_defaults(lookup, options)
       o        = lookup_select_options(l)
+      hider    = ""
       observer = ""
       html     = ""
       
@@ -181,7 +187,11 @@ module ActionView
         observer = lookup_observer(parent_control_id, this_control_id, l, options)
       end
 
-      html << observer
+      if o[:empty] && !l[:hide_element_if_empty].nil?
+        hider = javascript_tag "$('#{l[:hide_element_if_empty]}').hide()", :defer => 'defer'
+      end 
+      
+      html << observer << hider
 
     end
 
