@@ -19,8 +19,8 @@ class MessageboxController < ApplicationController
     @buttons             = abuttons_ref.map { |b| getbutton(b.split(":")) }
 
     respond_to do |format|
-      format.js   { render :layout => false }
-      format.html { render :layout => false }
+      format.js   { render :layout => false, :content_type => 'text/html' }
+      format.html { render :layout => false, :content_type => 'text/html' }
     end
 
   end

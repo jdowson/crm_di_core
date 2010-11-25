@@ -195,7 +195,10 @@ module ActionView
           }.merge(lookup.is_a?(Hash) ? lookup : { :lookup_name => lookup })
 
         if !l[:parent].nil? && l[:parent_id].nil? 
-          l[:parent_id] = (@object.nil? || !@object.respond_to?(l[:parent]) ? nil : @object.send(l[:parent])) 
+          l[:parent_id] = (@object.nil? || !@object.respond_to?(l[:parent]) ? nil : @object.send(l[:parent]))
+          if(l.has_key?(:parent_key_type) && (l[:parent_key_type] == :code)) 
+            l[:parent_id] = DILookupCache.parent_id_from_code(l[:lookup_name], l[:parent_id])
+          end 
         end
 
         @template.lookup_select(@object_name, method, l, objectify_options(options), @default_options.merge(html_options))
