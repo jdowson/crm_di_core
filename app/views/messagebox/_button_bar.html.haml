@@ -1,0 +1,9 @@
+.mboxbuttons{ :style => "clear:both" }
+  .ibuttons
+    - @buttons.each do |b|
+      - m = b[:action] == :script ? b[:method] : "new Ajax.Request('#{b[:action]}', {asynchronous:false, evalScripts:true, method:'#{b[:method].to_s}'}); Modalbox.hide();"
+      - m = "$('button').value = '#{b[:value].to_s}'; " << m if b.has_key?(:value)
+      - s = b[:type] == :n ? "negative" : (b[:type] == :p ? "positive" : "")
+      %button{ :type=>"", :onclick => "#{m}", :style => "#{s}"}
+        = image_tag("di_core/icon_#{b[:icon]}.png", :alt => "", :height => "16px", :width => "16px") unless b[:icon] == "none"
+        = "#{b[:caption]}"
