@@ -1,0 +1,17 @@
+- collapsed = true
+= subtitle :audit_information, collapsed, t(:audit_information, :scope => [:di]) 
+.section
+  %small#audit_information_intro{ hidden_if(!collapsed) }
+    = t(:audit_intro, :scope => [:di]) unless t(:audit_intro, :scope => [:di]).blank?
+  #audit_information{ hidden_if(collapsed) }
+    %div{ :style => "padding: 6px 0px 0px 20px" }
+      %table(width=500 cellpadding=0 cellspacing=0)
+        %tr
+          %td(valign="top")
+            .label #{t :created_at, :scope => [:di]}:
+            %b #{l(audit_information.created_at, :format => :long)} 
+          %td= spacer
+          %td(valign="top")
+            .label #{t :updated_at, :scope => [:di]}:
+            %b #{l(audit_information.updated_at, :format => :long)} 
+ 

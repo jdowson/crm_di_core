@@ -5,5 +5,5 @@
       - m = "$('button').value = '#{b[:value].to_s}'; " << m if b.has_key?(:value)
       - s = b[:type] == :n ? "negative" : (b[:type] == :p ? "positive" : "")
       %button{ :type=>"", :onclick => "#{m}", :style => "#{s}"}
-        = image_tag("di_core/icon_#{b[:icon]}.png", :alt => "", :height => "16px", :width => "16px") unless b[:icon] == "none"
+        = image_tag("/plugin_assets/crm_di_core/images/icon_#{b[:icon]}.png", :alt => "", :height => "16px", :width => "16px") unless b[:icon] == "none"
         = "#{b[:caption]}"

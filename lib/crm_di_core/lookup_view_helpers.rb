@@ -15,6 +15,10 @@ module CRMDICore
       DILookupCache.itemcolor(id)
     end
  
+    def lkup_code(id)
+      DILookupCache.itemcode(id)
+    end
+ 
     def lkup(id, locale = nil)
       DILookupCache.l_item(id, locale)
     end

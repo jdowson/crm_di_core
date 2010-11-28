@@ -39,7 +39,7 @@ EOS
 
   # Install javascript_includes hook
   define_method :"javascript_includes" do |view, context|
-    includes =  view.javascript_include_tag 'event.simulate.js'
+    includes =  view.javascript_include_tag '/plugin_assets/crm_di_core/javascripts/event.simulate.js'
   end
 
 
